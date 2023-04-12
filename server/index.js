@@ -6,14 +6,14 @@ const express = require('express');
 
 // Import mongoose library to connect to mongodb
 const mongoose = require('mongoose');
-const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-
+const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
+console.log(mongoose.connection.readyState);
 const app = express(); // Creating a new express app. One project can have multiple express apps.
 
 // Setting cookie properties. keys indicate the cookie is unqiue.

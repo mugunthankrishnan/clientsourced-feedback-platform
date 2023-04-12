@@ -22,10 +22,15 @@ module.exports = app => {
     */
     app.get('/auth/google/callback', passport.authenticate('google'));
 
+    app.get('/api/logout', (req,res)=>{
+        console.log("In api/logout")
+        req.logout();
+        res.send(req.user);
+    });
+    
     app.get('/api/current_user', (req, res) => {
         console.log("Current User from the api/current_user");
         console.log(req.user);
         res.send(req.user);
-        //res.send({hi:"there"});
     });
 };
